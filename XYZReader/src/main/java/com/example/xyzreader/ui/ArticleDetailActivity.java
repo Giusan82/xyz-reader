@@ -83,6 +83,7 @@ public class ArticleDetailActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 onSupportNavigateUp();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -116,7 +117,9 @@ public class ArticleDetailActivity extends AppCompatActivity
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         mCursor = cursor;
         mPagerAdapter.notifyDataSetChanged();
-
+        if (cursor == null || cursor.getCount() < 1) {
+            return;
+        }
         // Select the start ID
         if (mStartId > 0) {
             mCursor.moveToFirst();
