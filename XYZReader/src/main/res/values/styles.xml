@@ -18,10 +18,10 @@
 <resources>
 
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/Vibrant</item>
-        <item name="colorPrimaryDark">@color/DarkVibrant</item>
         <item name="colorAccent">@color/lightBlue_A200</item>
-        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColor">@color/colorTextDark</item>
+        <item name="titleTextColor">@color/colorTextLight</item>
+        <item name="subtitleTextColor">@color/colorTextLight</item>
     </style>
 
     <style name="Theme.Bacon.Detail">

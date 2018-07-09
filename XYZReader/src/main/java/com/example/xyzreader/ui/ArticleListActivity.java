@@ -1,5 +1,6 @@
 package com.example.xyzreader.ui;
 
+import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,8 +10,12 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
@@ -19,10 +24,12 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.xyzreader.BuildConfig;
@@ -54,6 +61,8 @@ public class ArticleListActivity extends AppCompatActivity implements
     private RecyclerView mRecyclerView;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private Window mWindow;
+    private CoordinatorLayout mContent;
+    private ImageView mActionBarBackground;
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
@@ -77,10 +86,18 @@ public class ArticleListActivity extends AppCompatActivity implements
         mWindow = this.getWindow();
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mCollapsingToolbarLayout = ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout));
+        mContent = findViewById(R.id.content);
+        mActionBarBackground = findViewById(R.id.iv_actionBar_background);
 
         //final View toolbarContainerView = findViewById(R.id.toolbar_container);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh();
+            }
+        });
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         getLoaderManager().initLoader(0, null, this);
@@ -89,14 +106,16 @@ public class ArticleListActivity extends AppCompatActivity implements
             refresh();
         }
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.typography);
-        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+        Palette.from(((BitmapDrawable)mActionBarBackground.getDrawable()).getBitmap()).generate(new Palette.PaletteAsyncListener() {
             @Override
             public void onGenerated(Palette palette) {
-                Timber.d("VibrantColor: " + Integer.toHexString(palette.getVibrantSwatch().getRgb()).toUpperCase());
-
                 mWindow.setStatusBarColor(palette.getDarkVibrantSwatch().getRgb());
                 mCollapsingToolbarLayout.setContentScrimColor(palette.getDarkVibrantSwatch().getRgb());
+                //source of GradientDrawable: https://stackoverflow.com/a/6116273
+                GradientDrawable gradiend = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
+                        new int[] {Color.BLACK, Color.BLACK, palette.getLightVibrantSwatch().getRgb()});
+                gradiend.setCornerRadius(0f);
+                mContent.setBackground(gradiend);
             }
         });
     }
@@ -144,10 +163,12 @@ public class ArticleListActivity extends AppCompatActivity implements
         Adapter adapter = new Adapter(cursor);
         adapter.setHasStableIds(true);
         mRecyclerView.setAdapter(adapter);
-        int columnCount = getResources().getInteger(R.integer.list_column_count);
+        int columnCount = numberOfColumns(this);
         StaggeredGridLayoutManager sglm =
                 new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(sglm);
+        mRecyclerView.setHasFixedSize(true);
+        Timber.d("Loading complete");
     }
 
     @Override
@@ -155,6 +176,7 @@ public class ArticleListActivity extends AppCompatActivity implements
         mRecyclerView.setAdapter(null);
     }
 
+    ////Adapter
     private class Adapter extends RecyclerView.Adapter<ViewHolder> {
         private Cursor mCursor;
 
@@ -217,6 +239,7 @@ public class ArticleListActivity extends AppCompatActivity implements
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),
                     ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());
             holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+            Timber.d(String.valueOf(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO)));
         }
 
         @Override
@@ -236,5 +259,17 @@ public class ArticleListActivity extends AppCompatActivity implements
             titleView = (TextView) view.findViewById(R.id.article_title);
             subtitleView = (TextView) view.findViewById(R.id.article_subtitle);
         }
+    }
+
+    //source:  Udacity reviewer
+    private static int numberOfColumns(Activity activity) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        int widthDivider = 600;
+        int width = displayMetrics.widthPixels;
+        int nColumns = width / widthDivider;
+        if (nColumns < 2) return 1; //to keep the grid aspect
+        return nColumns;
     }
 }

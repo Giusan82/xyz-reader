@@ -10,7 +10,7 @@
     android:focusable="true"
     android:foreground="?selectableItemBackground">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,37 +18,51 @@
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/photo_placeholder"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"/>
+
+        <View
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/photo_placeholder" />
+            android:background="@drawable/photo_background_protection_bottom"/>
 
-        <TextView
-            android:id="@+id/article_title"
-            style="@style/TextAppearance.AppCompat.Subhead"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/article_subtitle"
-            android:layout_alignParentStart="true"
-            android:ellipsize="end"
-            android:maxLines="4"
-            android:paddingBottom="4dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
-            android:textColor="@color/ltgray" />
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/article_title"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:paddingBottom="4dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:textColor="?titleTextColor"
+                android:textSize="@dimen/list_subtitle1_text_size"
+                android:fontFamily="serif"/>
 
-        <TextView
-            android:id="@+id/article_subtitle"
-            style="@style/TextAppearance.AppCompat.Body1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:textColor="?android:textColor" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/article_subtitle"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingBottom="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="?subtitleTextColor"
+                android:textSize="@dimen/list_subtitle2_text_size"
+                android:fontFamily="serif"/>
+        </LinearLayout>
+
+    </FrameLayout>
 
 </android.support.v7.widget.CardView>
