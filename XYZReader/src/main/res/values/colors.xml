@@ -17,7 +17,7 @@
 
 <resources>
     <color name="photo_placeholder">#ccc</color>
-    <color name="lightBlue_A200">#40C4FF</color>
-    <color name="colorTextLight">#ffe0e0e0</color>
-    <color name="colorTextDark">#ff333333</color>
+    <color name="Blue_A200">#448AFF</color>
+    <color name="gray_400">#ffBDBDBD</color>
+    <color name="gray_900">#212121</color>
 </resources>

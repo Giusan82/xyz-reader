@@ -18,10 +18,11 @@
 <resources>
 
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="colorAccent">@color/lightBlue_A200</item>
-        <item name="android:textColor">@color/colorTextDark</item>
-        <item name="titleTextColor">@color/colorTextLight</item>
-        <item name="subtitleTextColor">@color/colorTextLight</item>
+        <item name="colorAccent">@color/Blue_A200</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="titleTextColor">@android:color/white</item>
+        <item name="subtitleTextColor">@color/gray_400</item>
+        <item name="windowBackground">@color/gray_900</item>
     </style>
 
     <style name="Theme.Bacon.Detail">
