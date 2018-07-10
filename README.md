@@ -38,7 +38,7 @@ It also replicates a common developer task of updating and changing an app's des
 * App uses fonts that are either the Android defaults, are complementary, and aren't otherwise distracting.
 * App conforms to common standards found in the [Android Nanodegree General Project Guidelines](http://udacity.github.io/android-nanodegree-guidelines/core.html).
 
-## Screenshots
+# Screenshots
 
 ## Phone
 <div align="center">
@@ -46,6 +46,7 @@ It also replicates a common developer task of updating and changing an app's des
   <img src="screenshots/screenshot-2018-07-10_17.58.49.500.png" height="450" style="max-width:100%;">
   <img src="screenshots/screenshot-2018-07-10_17.59.07.483.png" height="450" style="max-width:100%;">
 </div>
+
 ## Tablet
 <div align="center">
   <img src="screenshots/screenshot-2018-07-10_18.02.51.110.png" height="450" style="max-width:100%;">
