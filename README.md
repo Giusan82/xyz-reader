@@ -40,9 +40,11 @@ It also replicates a common developer task of updating and changing an app's des
 
 ## Screenshots
 
-![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_16.19.04.302.png)
-![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_17.58.49.500.png)
-![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_17.59.07.483.png)
-![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_18.02.51.110.png)
-![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_18.03.11.251.png)
-![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_18.03.28.211.png)
+<div align="center">
+  <img src="screenshots/screenshot-2018-07-10_16.19.04.302.png" height="550" style="max-width:100%;">
+  <img src="screenshots/screenshot-2018-07-10_17.58.49.500.png" height="550" style="max-width:100%;">
+  <img src="screenshots/screenshot-2018-07-10_17.59.07.483.png" height="550" style="max-width:100%;">
+  <img src="screenshots/screenshot-2018-07-10_18.02.51.110.png" height="550" style="max-width:100%;">
+  <img src="screenshots/screenshot-2018-07-10_18.03.11.251.png" height="550" style="max-width:100%;">
+  <img src="screenshots/screenshot-2018-07-10_18.03.28.211.png" height="550" style="max-width:100%;">
+</div>
