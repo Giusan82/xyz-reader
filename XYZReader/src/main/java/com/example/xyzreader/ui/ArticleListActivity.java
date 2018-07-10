@@ -1,8 +1,6 @@
 package com.example.xyzreader.ui;
 
-import android.animation.Animator;
 import android.app.Activity;
-import android.app.ActivityOptions;
 import android.app.LoaderManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,20 +8,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.transition.Slide;
-import android.support.transition.TransitionManager;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
@@ -33,11 +23,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
@@ -53,7 +39,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 
 import timber.log.Timber;
 
@@ -79,15 +64,15 @@ public class ArticleListActivity extends AppCompatActivity implements
     // Use default locale format
     private SimpleDateFormat outputFormat = new SimpleDateFormat();
     // Most time functions can only handle 1902 - 2037
-    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2,1,1);
+    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
 
-        if(BuildConfig.DEBUG){
-            Timber.plant(new Timber.DebugTree(){
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree() {
                 @Override
                 protected String createStackElementTag(StackTraceElement element) {
                     return super.createStackElementTag(element) + "|" + element.getMethodName() + "|" + element.getLineNumber();
@@ -99,8 +84,6 @@ public class ArticleListActivity extends AppCompatActivity implements
         mCollapsingToolbarLayout = ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout));
         mContent = findViewById(R.id.content);
         mActionBarBackground = findViewById(R.id.iv_actionBar_background);
-
-        //final View toolbarContainerView = findViewById(R.id.toolbar_container);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -117,14 +100,14 @@ public class ArticleListActivity extends AppCompatActivity implements
             refresh();
         }
 
-        Palette.from(((BitmapDrawable)mActionBarBackground.getDrawable()).getBitmap()).generate(new Palette.PaletteAsyncListener() {
+        Palette.from(((BitmapDrawable) mActionBarBackground.getDrawable()).getBitmap()).generate(new Palette.PaletteAsyncListener() {
             @Override
             public void onGenerated(Palette palette) {
                 mWindow.setStatusBarColor(palette.getDarkVibrantSwatch().getRgb());
                 mCollapsingToolbarLayout.setContentScrimColor(palette.getDarkVibrantSwatch().getRgb());
                 //source of GradientDrawable: https://stackoverflow.com/a/6116273
                 GradientDrawable gradiend = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
-                        new int[] {Color.BLACK, Color.BLACK, palette.getLightVibrantSwatch().getRgb()});
+                        new int[]{Color.BLACK, Color.BLACK, palette.getLightVibrantSwatch().getRgb()});
                 gradiend.setCornerRadius(0f);
                 mContent.setBackground(gradiend);
             }
@@ -245,8 +228,8 @@ public class ArticleListActivity extends AppCompatActivity implements
             } else {
                 holder.subtitleView.setText(Html.fromHtml(
                         outputFormat.format(publishedDate)
-                        + "<br/>" + " by "
-                        + mCursor.getString(ArticleLoader.Query.AUTHOR)));
+                                + "<br/>" + " by "
+                                + mCursor.getString(ArticleLoader.Query.AUTHOR)));
             }
             holder.thumbnailView.setImageUrl(
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),

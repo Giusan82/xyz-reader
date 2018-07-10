@@ -1,8 +1,8 @@
 <resources>
     <declare-styleable name="DrawInsetsFrameLayout">
         <attr name="insetBackground" format="color|reference" />
-        <attr name="titleTextColor" format="color"/>
-        <attr name="subtitleTextColor" format="color"/>
-        <attr name="windowBackground" format="color"/>
+        <attr name="titleTextColor" format="color" />
+        <attr name="subtitleTextColor" format="color" />
+        <attr name="windowBackground" format="color" />
     </declare-styleable>
 </resources>
