@@ -16,7 +16,8 @@ public class Config {
             url = new URL("https://go.udacity.com/xyz-reader-json" );
         } catch (MalformedURLException e) {
             // DONE: throw a real error
-            Timber.d("Please check your internet connection, message: " + e.getMessage());
+            Timber.d("Please check your internet connection.");
+            e.printStackTrace();
         }
 
         BASE_URL = url;
