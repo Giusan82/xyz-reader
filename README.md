@@ -1,4 +1,4 @@
-= XYZ Reader
+# XYZ Reader
 
 <p>App created for Udacity.com in the course: Google Challenge Scholarship: Android Developer Nanodegree Program.
 <br>
