@@ -2,7 +2,7 @@
 
 <p>App created for Udacity.com in the course: Google Challenge Scholarship: Android Developer Nanodegree Program.
 <br>
-_Skill level:_ **advanced**
+<i>Skill level:</i> <b>advanced</b>
 
 In this project, I redesigned an app to follow the Material Design guidelines and translate a set of static design mocks to a living and breathing app.
 
@@ -41,26 +41,13 @@ It also replicates a common developer task of updating and changing an app's des
 # Screenshots
 
 ## Phone
-![image alt <](screenshots/screenshot-2018-07-10_16.19.04.302.png)
-![image alt <](screenshots/screenshot-2018-07-10_17.58.49.500.png)
-![image alt <](screenshots/screenshot-2018-07-10_17.59.07.483.png)
+<div align="center">
+<img src="screenshots/screenshot-2018-07-10_16.19.04.302.png" height="450" style="max-width:100%;">
+<img src="screenshots/screenshot-2018-07-10_17.58.49.500.png" height="450" style="max-width:100%;">
+<img src="screenshots/screenshot-2018-07-10_17.59.07.483.png" height="450" style="max-width:100%;">
 
 ## Tablet
-![image alt <>](screenshots/screenshot-2018-07-10_18.02.51.110.png)
-![image alt <>](screenshots/screenshot-2018-07-10_18.03.11.251.png)
-![image alt <>](screenshots/screenshot-2018-07-10_18.03.28.211.png)
-
-
-
-img[alt$="<"] {
-  float:left;
-  height: 450px;
-  margin: 20px;
-}
-
-img[alt$="<>"] {
-    display: block;
-    height: 450px;
-    margin: 20px;
-    float: none!important;
-}
+<img src="screenshots/screenshot-2018-07-10_18.02.51.110.png" height="450" style="max-width:100%;">
+<img src="screenshots/screenshot-2018-07-10_18.03.11.251.png" height="450" style="max-width:100%;">
+<img src="screenshots/screenshot-2018-07-10_18.03.28.211.png" height="450" style="max-width:100%;">
+</div>
