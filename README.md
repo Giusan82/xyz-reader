@@ -38,3 +38,11 @@ It also replicates a common developer task of updating and changing an app's des
 * App uses fonts that are either the Android defaults, are complementary, and aren't otherwise distracting.
 * App conforms to common standards found in the [Android Nanodegree General Project Guidelines](http://udacity.github.io/android-nanodegree-guidelines/core.html).
 
+## Screenshots
+
+![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_16.19.04.302.png)
+![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_17.58.49.500.png)
+![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_17.59.07.483.png)
+![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_18.02.51.110.png)
+![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_18.03.11.251.png)
+![](https://github.com/Giusan82/xyz-reader/blob/master/screenshots/screenshot-2018-07-10_18.03.28.211.png)
